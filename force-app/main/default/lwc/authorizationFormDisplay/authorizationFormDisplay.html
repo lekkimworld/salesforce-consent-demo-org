@@ -1,0 +1,26 @@
+<template>
+  <template if:true={selectedText}>
+    <lightning-combobox
+      label="Language"
+      name="language"
+      value={selectedLanguage}
+      options={languages}
+      onchange={handleLanguageChange}
+    ></lightning-combobox>
+    <p class="authtext">{selectedText.text}</p>
+    <p class="slds-m-top_large slds-text-align_center">
+      <lightning-button
+        variant="success"
+        label="I agree"
+        class="btn"
+        onclick={handleConsentPositive}
+      ></lightning-button>
+      <lightning-button
+        variant="destructive-text"
+        label="I do not agree"
+        class="btn slds-m-left_medium"
+        onclick={handleConsentNegative}
+      ></lightning-button>
+    </p>
+  </template>
+</template>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>mheisterberg@salesforce.com</contactEmail>
+    <label>Demo Server App - dev</label>
+    <oauthConfig>
+        <callbackUrl>https://example.com/dummy</callbackUrl>
+        <certificate>MIIDEjCCAfoCCQDqfsGflq7PfzANBgkqhkiG9w0BAQsFADBLMS0wKwYDVQQDDCREZW1vIFNlcnZlciBBcHAgKDAwRDNOMDAwMDAwM0trc1VBRSkxDTALBgNVBAoMBFNGREMxCzAJBgNVBAYTAkRLMB4XDTIxMDQxNTA4MjgwMloXDTIyMDQxNTA4MjgwMlowSzEtMCsGA1UEAwwkRGVtbyBTZXJ2ZXIgQXBwICgwMEQzTjAwMDAwMDNLa3NVQUUpMQ0wCwYDVQQKDARTRkRDMQswCQYDVQQGEwJESzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANM+C+1qAMS2PLBBd53q4KrsK5QIwkHt2ICu5Gej3vvHseMzU98yGBSg+8jnUqX93UdbUCATQAZFdLxk8/8mHS5GjCeGYL2P10LYYphnVduGjgDo6Mvyu+pesej+W9CggsWvkfaD/qgJKAsfeCBLkAnHzwPPn1mCKLpM7cbmhxLtpSzFbsVBZjdUxxhIB6j6OxRCUQ+QBF7G2XZRQ7v/XeBV4s+Pv+h7Rbn9Irm4NlkYWglNvNEu51XQ8QW0l/2eq08kNGbqervUsElRuWuYgIDW3U1hc+4Z86z3t1Zlrp/uulGqQBsDBvxFaibVHEP5bmvhG246quVn7I2pMN29KWcCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAREVmjcfKJ25Pf0ytVvlD1UqV9Yv7R6VpAluTivKgy9O2A8UvCUs/pPNvVd8tASDlOwilKgo719yXI3xPn1X/6SEPrs7i2Gea0t8jW6smasHT9PECk9XkKv7Q0enOrV/p2JbFlt0bRZjzLwCcbiIroOauZ/WOWnHCzoqdWEb6DkEozGHJT82hnTugSuvisLdiTZphDavd+wbPsARB1a1LLe2ci96a8jA+UZhU1npbg/e6UHYI+7uHdmsf6jpi0kLEL8HfxaT+SEZK42qP+whB4EeGF0N84ln1x3Rg8lyvcFknBAgFZZE0QE0vDzzfg6nzkvKJroXRvd5GGjzLGZb+EQ==</certificate>
+        <consumerKey>3MVG9Lu3LaaTCEgL5Az3fNqWa0vtR4WomElQHjdpG5tAVNqw941EeAITqEQv4tTBxmljLXCKPoLANWj8.IWR.</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>zero</refreshTokenPolicy>
+    </oauthPolicy>
+    <permissionSetName>Demo Server App</permissionSetName>
+</ConnectedApp>
