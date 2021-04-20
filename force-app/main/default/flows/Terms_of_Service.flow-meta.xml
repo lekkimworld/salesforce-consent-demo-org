@@ -1,11 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>action_LocateConsents</name>
+        <label>Locate consents</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <actionName>AuthFormConsentLocator_InvocableMethod</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>See_if_user_already_consented</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>dataUsePurpose</name>
+            <value>
+                <elementReference>dataUsePurpose</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <name>Write_Auth_Form_Consent_record</name>
+        <label>Write Auth Form Consent record</label>
+        <locationX>242</locationX>
+        <locationY>638</locationY>
+        <actionName>AuthFormConsentWriter_InvocableMethod</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>captureSource</name>
+            <value>
+                <stringValue>Web</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>authformTextId</name>
+            <value>
+                <elementReference>cmp_AuthFormDisplay.authformTextId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>contactId</name>
+            <value>
+                <elementReference>action_LocateConsents.contactId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>individualId</name>
+            <value>
+                <elementReference>action_LocateConsents.individualId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>status</name>
+            <value>
+                <stringValue>Signed</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>userId</name>
+            <value>
+                <elementReference>action_LocateConsents.userId</elementReference>
+            </value>
+        </inputParameters>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
     <apiVersion>51.0</apiVersion>
     <assignments>
         <name>Log_user_out</name>
         <label>Log user out</label>
-        <locationX>308</locationX>
-        <locationY>398</locationY>
+        <locationX>506</locationX>
+        <locationY>638</locationY>
         <assignmentItems>
             <assignToReference>LoginFlow_ForceLogout</assignToReference>
             <operator>Assign</operator>
@@ -17,8 +82,8 @@
     <decisions>
         <name>decision_UserConsented</name>
         <label>See if user consented</label>
-        <locationX>176</locationX>
-        <locationY>278</locationY>
+        <locationX>374</locationX>
+        <locationY>518</locationY>
         <defaultConnector>
             <targetReference>Log_user_out</targetReference>
         </defaultConnector>
@@ -33,7 +98,32 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>Write_Auth_Form_Consent_record</targetReference>
+            </connector>
             <label>User Consented</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>See_if_user_already_consented</name>
+        <label>See if user already consented</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <defaultConnector>
+            <targetReference>screen_Terms_of_Service</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>User Did not Consent yet</defaultConnectorLabel>
+        <rules>
+            <name>User_Already_Consented</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>action_LocateConsents.consentDateTime</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>User Already Consented</label>
         </rules>
     </decisions>
     <interviewLabel>Terms of Service {!$Flow.CurrentDateTime}</interviewLabel>
@@ -61,8 +151,8 @@
     <screens>
         <name>screen_Terms_of_Service</name>
         <label>Terms of Service</label>
-        <locationX>176</locationX>
-        <locationY>158</locationY>
+        <locationX>374</locationX>
+        <locationY>398</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -96,7 +186,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>screen_Terms_of_Service</targetReference>
+            <targetReference>action_LocateConsents</targetReference>
         </connector>
     </start>
     <status>Active</status>
