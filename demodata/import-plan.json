@@ -38,5 +38,21 @@
         "files": [
             "authformtext-AuthorizationFormTexts.json"
         ]
+    },
+    {
+        "sobject": "Account",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [
+            "account-Accounts.json"
+        ]
+    },
+    {
+        "sobject": "Contact",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": [
+            "contact-Contacts.json"
+        ]
     }
 ]
