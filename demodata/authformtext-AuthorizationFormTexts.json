@@ -1,0 +1,44 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "AuthorizationFormText",
+                "referenceId": "AuthorizationFormTextRef1"
+            },
+            "Name": "Terms of Service, English, 2019-02-19",
+            "FormText__c": "App Terms of Service\r\nVersion: 2019-02-19\r\n\r\nThese Website Standard Terms of Service written on this webpage shall manage your use of our website. These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms of service written in here. You must not use this Website if you disagree with any of these Website Standard Terms of Service.\r\n\r\nMinors or people below 18 years old are not allowed to use this Website.",
+            "Locale": "en_US",
+            "AuthorizationFormId": "@AuthorizationFormRef_20190219_20210416"
+        },
+        {
+            "attributes": {
+                "type": "AuthorizationFormText",
+                "referenceId": "AuthorizationFormTextRef2"
+            },
+            "Name": "Terms of Service, Spanish, 2019-02-19",
+            "FormText__c": "App Terms of Service\r\nVersion: 2019-02-19\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lobortis vel ante at varius. Sed pellentesque urna a libero semper, convallis laoreet tellus sollicitudin. Quisque fermentum in nisi in hendrerit. Vestibulum sit amet cursus eros. Pellentesque dapibus ante magna, et ultricies tellus aliquam vel. Nam non tellus porttitor, sollicitudin elit non, malesuada lectus. Nullam finibus placerat congue.\r\n\r\nDuis ac risus ullamcorper, gravida urna vehicula, pretium nulla. Sed varius nec ligula in placerat. Fusce aliquet arcu tortor, eu consequat nisl rhoncus in. Praesent id massa lorem. Maecenas sagittis sodales nisi id pharetra. Sed et fringilla nisl, a fringilla tortor. Etiam sit amet lobortis ex, a semper neque. Proin viverra massa lacus, quis venenatis arcu semper eu. Cras magna ex, mollis ac justo sit amet, varius ornare ante. Quisque convallis sapien ut massa ullamcorper vulputate. Morbi et tincidunt ligula.",
+            "Locale": "es_ES",
+            "AuthorizationFormId": "@AuthorizationFormRef_20190219_20210416"
+        },
+        {
+            "attributes": {
+                "type": "AuthorizationFormText",
+                "referenceId": "AuthorizationFormTextRef3"
+            },
+            "Name": "Terms of Service, English, 2021-04-16",
+            "FormText__c": "App Terms of Service\r\nVersion: 2021-04-16\r\n\r\nThese Website Standard Terms of Service written on this webpage shall manage your use of our website. These Terms will be applied fully and affect to your use of this Website. By using this Website, you agreed to accept all terms of service written in here. You must not use this Website if you disagree with any of these Website Standard Terms of Service.\r\n\r\nMinors or people below 18 years old are not allowed to use this Website.",
+            "Locale": "en_US",
+            "AuthorizationFormId": "@AuthorizationFormRef_20210416"
+        },
+        {
+            "attributes": {
+                "type": "AuthorizationFormText",
+                "referenceId": "AuthorizationFormTextRef4"
+            },
+            "Name": "Terms of Service, Spanish, 2021-04-16",
+            "FormText__c": "App Terms of Service\r\nVersion: 2021-04-16\r\n\r\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lobortis vel ante at varius. Sed pellentesque urna a libero semper, convallis laoreet tellus sollicitudin. Quisque fermentum in nisi in hendrerit. Vestibulum sit amet cursus eros. Pellentesque dapibus ante magna, et ultricies tellus aliquam vel. Nam non tellus porttitor, sollicitudin elit non, malesuada lectus. Nullam finibus placerat congue.\r\n\r\nDuis ac risus ullamcorper, gravida urna vehicula, pretium nulla. Sed varius nec ligula in placerat. Fusce aliquet arcu tortor, eu consequat nisl rhoncus in. Praesent id massa lorem. Maecenas sagittis sodales nisi id pharetra. Sed et fringilla nisl, a fringilla tortor. Etiam sit amet lobortis ex, a semper neque. Proin viverra massa lacus, quis venenatis arcu semper eu. Cras magna ex, mollis ac justo sit amet, varius ornare ante. Quisque convallis sapien ut massa ullamcorper vulputate. Morbi et tincidunt ligula.",
+            "Locale": "es_ES",
+            "AuthorizationFormId": "@AuthorizationFormRef_20210416"
+        }
+    ]
+}

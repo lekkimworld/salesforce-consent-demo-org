@@ -1,0 +1,42 @@
+[
+    {
+        "sobject": "DataUseLegalBasis",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [
+            "legalbasic-DataUseLegalBasiss.json"
+        ]
+    },
+    {
+        "sobject": "DataUsePurpose",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": [
+            "datausepurpose-DataUsePurposes.json"
+        ]
+    },
+    {
+        "sobject": "AuthorizationForm",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": [
+            "authform-AuthorizationForms.json"
+        ]
+    },
+    {
+        "sobject": "AuthorizationFormDataUse",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": [
+            "authform_datause-AuthorizationFormDataUses.json"
+        ]
+    },
+    {
+        "sobject": "AuthorizationFormText",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": [
+            "authformtext-AuthorizationFormTexts.json"
+        ]
+    }
+]

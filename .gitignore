@@ -38,4 +38,5 @@ ehthumbs.db
 $RECYCLE.BIN/
 dump.rdb
 *.pem
+*.der
 scripts

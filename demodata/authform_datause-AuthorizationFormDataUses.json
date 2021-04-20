@@ -1,0 +1,13 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "AuthorizationFormDataUse",
+                "referenceId": "AuthorizationFormDataUseRef1"
+            },
+            "Name": "Terms of Service - Data Use",
+            "AuthorizationFormId": "@AuthorizationFormRef_20210416",
+            "DataUsePurposeId": "@DataUsePurposeRef_ToS"
+        }
+    ]
+}

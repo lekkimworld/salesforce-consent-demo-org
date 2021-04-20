@@ -1,0 +1,33 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "AuthorizationForm",
+                "referenceId": "AuthorizationFormRef1"
+            },
+            "Name": "Terms of Service, 2000-01-01-2019-02-19",
+            "RevisionNumber": "1",
+            "EffectiveFromDate": "2000-01-01",
+            "EffectiveToDate": "2019-02-19"
+        },
+        {
+            "attributes": {
+                "type": "AuthorizationForm",
+                "referenceId": "AuthorizationFormRef_20190219_20210416"
+            },
+            "Name": "Terms of Service, 2019-02-19-2021-04-16",
+            "RevisionNumber": "2",
+            "EffectiveFromDate": "2019-02-19",
+            "EffectiveToDate": "2021-04-16"
+        },
+        {
+            "attributes": {
+                "type": "AuthorizationForm",
+                "referenceId": "AuthorizationFormRef_20210416"
+            },
+            "Name": "Terms of Service, 2021-04-16-",
+            "RevisionNumber": "3",
+            "EffectiveFromDate": "2021-04-16"
+        }
+    ]
+}

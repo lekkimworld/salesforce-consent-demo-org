@@ -1,0 +1,12 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "DataUseLegalBasis",
+                "referenceId": "DataUseLegalBasisRef_Terms"
+            },
+            "Name": "Terms",
+            "Description": "Legal use basis - terms of service"
+        }
+    ]
+}
