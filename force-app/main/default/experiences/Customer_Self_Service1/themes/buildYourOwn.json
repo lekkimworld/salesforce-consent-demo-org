@@ -1,0 +1,102 @@
+{
+  "activeBrandingSetId" : "1fe67104-efa7-48c9-91d5-5bfc60b49070",
+  "customCSS" : "",
+  "developerName" : "starter",
+  "id" : "fc07c8b0-be36-42ec-aa80-6a059e49233d",
+  "label" : "Build Your Own",
+  "layouts" : {
+    "Inner" : "d4751b57-72b7-448f-8c62-a2bafb24affd",
+    "Login" : "af815a6b-3148-4eef-a0d2-6413261c4377"
+  },
+  "type" : "theme",
+  "views" : [ {
+    "componentAttributes" : { },
+    "componentName" : "salesforceIdentity:loginBody2",
+    "id" : "af815a6b-3148-4eef-a0d2-6413261c4377",
+    "label" : "Login",
+    "regions" : [ {
+      "id" : "19c0b54f-f6c6-4215-9845-206d6178d65a",
+      "regionName" : "header",
+      "type" : "region"
+    }, {
+      "id" : "04876145-28d0-4ca1-a6a5-781c821addb3",
+      "regionName" : "content",
+      "type" : "region"
+    }, {
+      "id" : "fbedb190-ec8a-400f-8c23-241a2400b8c2",
+      "regionName" : "footer",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  }, {
+    "componentAttributes" : {
+      "fixedPageWidth" : 1440,
+      "isPageWidthFixed" : true
+    },
+    "componentName" : "siteforce:starterBody",
+    "id" : "d4751b57-72b7-448f-8c62-a2bafb24affd",
+    "label" : "Default",
+    "regions" : [ {
+      "components" : [ {
+        "componentAttributes" : {
+          "maxAutoCompleteResults" : 5,
+          "searchLabel" : "Search...",
+          "searchObjects" : [ {
+            "isPublic" : true,
+            "name" : "Account"
+          } ]
+        },
+        "componentName" : "forceCommunity:globalSearchInput",
+        "id" : "583928bc-d427-46b7-8940-25c753fcd8ce",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "1a3ac0a0-cc18-47a5-831f-c29ebdf0a9f7",
+      "regionName" : "search",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "accountManagementLabel" : "Account Management",
+          "communityBuilderLabel" : "Experience Builder",
+          "communitySetupLabel" : "Salesforce Setup",
+          "contactSupportLabel" : "Contact Support",
+          "filterName" : "MyCases",
+          "homeLabel" : "Home",
+          "includeContactSupport" : true,
+          "includeMessages" : false,
+          "loginLabel" : "Login",
+          "logoutLabel" : "Logout",
+          "myAccountLabel" : "My Account",
+          "showAccountManagement" : true,
+          "showUserSettings" : true,
+          "userSettingsLabel" : "My Settings",
+          "viewProfileLabel" : "My Profile"
+        },
+        "componentName" : "selfService:userProfileMenu",
+        "id" : "7652c284-4b43-4ae4-b5af-0d65302845c9",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "c33207ce-d081-4f67-8306-9e32880128de",
+      "regionName" : "profileMenu",
+      "type" : "region"
+    }, {
+      "components" : [ {
+        "componentAttributes" : {
+          "NavigationMenuEditorRefresh" : "",
+          "hideAppLauncher" : true,
+          "hideHomeText" : true
+        },
+        "componentName" : "forceCommunity:globalNavigation",
+        "id" : "3647d3a4-8d1e-4246-9fc9-36081f79fe55",
+        "renditionMap" : { },
+        "type" : "component"
+      } ],
+      "id" : "ca6bc59b-1e6e-4813-8a7c-d5724f67f6bf",
+      "regionName" : "navBar",
+      "type" : "region"
+    } ],
+    "type" : "view"
+  } ]
+}
