@@ -45,3 +45,61 @@ cat ./private_key.pem | sed 's/$/\\n/g' | tr -d "\n"
 
 Convert private key PEM to multiline .env variable
 cat ../org/private_key.pem | sed 's/$/\\n/g' | tr -d "\n"
+
+## Create demo portal user
+
+```
+final String timezone = 'Europe/Paris';
+final String locale = 'da_DK';
+final String actualEmail = 'mheisterberg@salesforce.com';
+final String fn = 'John';
+final String ln = 'Doe';
+final String alias = (fn.toLowerCase().substring(0, 1) + ln.toLowerCase()).substring(0,4) + String.valueOf(DateTime.now().getTime()).reverse().substring(0,4);
+final String email = fn.toLowerCase() + '.' + ln.toLowerCase() + '@example.com';
+
+Account a = [SELECT Id FROM Account WHERE Name = 'Foo Corp.' LIMIT 1];
+
+Contact c = new Contact();
+c.FirstName = fn;
+c.LastName = ln;
+c.Email = email;
+c.AccountId = a.Id;
+INSERT c;
+
+Profile p = [SELECT Id FROM Profile WHERE Name = 'CC Demo User' LIMIT 1];
+
+User u = new User();
+u.firstname = fn;
+u.lastname = ln;
+u.username = email;
+u.email = actualEmail;
+u.ProfileId = p.Id;
+u.Contactid = c.Id;
+u.alias = alias;
+u.EmailEncodingKey = 'UTF-8';
+u.IsActive = true;
+u.LanguageLocaleKey = 'en_US';
+u.LocaleSidKey = locale;
+u.TimeZoneSidKey = timezone;
+insert u;
+```
+
+## Disable all portal users and delete their data
+
+```
+List<User> users = [SELECT Id, IsActive, FirstName, LastName FROM User WHERE IsPortalEnabled=true];
+for (User u : Users) {
+u.IsActive = false;
+u.IsPortalEnabled = false;
+u.FirstName = 'Disabled*' + u.FirstName;
+u.LastName = 'Disabled*' + u.LastName;
+}
+UPDATE users;
+DELETE [SELECT Id FROM ContactPointTypeConsent];
+DELETE [SELECT Id FROM AuthorizationFormConsent];
+final List<Contact> contacts = [SELECT Id, IndividualId FROM Contact];
+for (Contact c : contacts) c.IndividualId = null;
+UPDATE contacts;
+DELETE [SELECT Id FROM Individual];
+DELETE contacts;
+```

@@ -59,8 +59,8 @@ public inherited sharing class AuthFormConsent_IndividualUtil {
                     } else if (createIndividuals) {
                         // there isn't an Individual record and we should create it
                         Individual ind = new Individual();
-                        ind.FirstName = 'Jane';
-                        ind.LastName = 'Doe';
+                        ind.FirstName = c.FirstName;
+                        ind.LastName = c.LastName;
                         result.individual = ind;
                         result.contact = c;
                         newIndividuals.add(ind);
