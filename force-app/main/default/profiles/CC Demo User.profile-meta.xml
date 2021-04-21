@@ -6,11 +6,11 @@
         <visible>false</visible>
     </applicationVisibilities>
     <classAccesses>
-        <apexClass>AuthFormConsentLocator_InvocableMethod</apexClass>
+        <apexClass>AuthFormConsentLocator_Invocable</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>AuthFormConsentWriter_InvocableMethod</apexClass>
+        <apexClass>AuthFormConsentWriter_Invocable</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>

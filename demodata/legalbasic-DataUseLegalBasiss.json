@@ -7,6 +7,22 @@
             },
             "Name": "Terms",
             "Description": "Legal use basis - terms of service"
+        },
+        {
+            "attributes": {
+                "type": "DataUseLegalBasis",
+                "referenceId": "DataUseLegalBasisRef_Order"
+            },
+            "Name": "Order",
+            "Description": "Legal use basis - ordering"
+        },
+        {
+            "attributes": {
+                "type": "DataUseLegalBasis",
+                "referenceId": "DataUseLegalBasisRef_MarketingConsent"
+            },
+            "Name": "Marketing",
+            "Description": "Legal use basis - marketing consent"
         }
     ]
 }

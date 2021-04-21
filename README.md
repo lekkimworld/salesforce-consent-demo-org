@@ -31,8 +31,8 @@ cat ./connectedAppTemplates/Demo_User_App_dev.connectedApp-meta.xml | sed "s|REP
 sfdx force:source:deploy -m PermissionSet
 sfdx force:user:permset:assign -n Demo_Server_App
 sfdx force:source:deploy -m ConnectedApp
-sfdx force:source:deploy -m Profile
-sfdx force:source:deploy -m SiteDotCom,Network,ExperienceBundle,CustomSite,ApexPage
+sfdx force:source:deploy -m ApexPage,Profile
+sfdx force:source:deploy -m SiteDotCom,Network,ExperienceBundle,CustomSite
 sfdx force:source:deploy -m ContentAsset
 sfdx force:community:publish -n "Customer Self-Service"
 

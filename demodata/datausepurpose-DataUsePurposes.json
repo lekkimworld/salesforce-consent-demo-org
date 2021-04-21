@@ -7,6 +7,30 @@
             },
             "Name": "Terms of Service",
             "LegalBasisId": "@DataUseLegalBasisRef_Terms"
+        },
+        {
+            "attributes": {
+                "type": "DataUsePurpose",
+                "referenceId": "DataUsePurposeRef_Telemetry"
+            },
+            "Name": "Telemetry",
+            "LegalBasisId": "@DataUseLegalBasisRef_Terms"
+        },
+        {
+            "attributes": {
+                "type": "DataUsePurpose",
+                "referenceId": "DataUsePurposeRef_Newsletter"
+            },
+            "Name": "Newsletter",
+            "LegalBasisId": "@DataUseLegalBasisRef_MarketingConsent"
+        },
+        {
+            "attributes": {
+                "type": "DataUsePurpose",
+                "referenceId": "DataUsePurposeRef_OnlineOrder"
+            },
+            "Name": "Online Order",
+            "LegalBasisId": "@DataUseLegalBasisRef_Order"
         }
     ]
 }
