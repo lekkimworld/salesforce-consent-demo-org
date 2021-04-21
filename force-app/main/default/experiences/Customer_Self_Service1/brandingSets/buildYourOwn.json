@@ -7,7 +7,7 @@
     "ActionColor" : "rgb(30, 53, 82)",
     "BorderColor" : "#D4D4D4",
     "CardBackgroundColor" : "rgba(255, 255, 255, 0)",
-    "CompanyLogo" : "/file-asset/my_fitness_tracker_326x175?v=1&height=300&width=300",
+    "CompanyLogo" : "/file-asset/my_fitness_tracker_326x175?v=1&amp;height=300&amp;width=300",
     "DetailTextColor" : "#696969",
     "ErrorFontColor" : "#ff9e9e",
     "HeaderFonts" : "Montserrat",

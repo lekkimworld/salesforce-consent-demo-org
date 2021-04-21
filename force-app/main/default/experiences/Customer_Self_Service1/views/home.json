@@ -10,7 +10,7 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "richTextValue" : "<div>     <p><span style='font-size: 48px;'>Let's get started!</span></p>     <ol>         <li><span style='font-size: 18px;'>Unfamiliar with Build Your Own? Click Take a Tour in the Help menu.</span></li>         <li><span style='font-size: 18px;'>Want to add more pages? Take a look at the Pages menu.</span></li>         <li><span style='font-size: 18px;'>Want more components on your page? Drag and drop components from the Components panel.</span></li>         <li><span style='font-size: 18px;'>Want your users to see your company logo? Head on over to the Theme panel.</span></li>         <li><span style='font-size: 18px;'>Refine the look of your site with a custom theme layout. See the Experience Cloud Developer Guide.</span></li>     </ol> </div>"
+        "richTextValue" : "<p><span style=\"font-size: 48px;\">My Fitness Tracker Preference Center</span></p><p><span style=\"font-size: 16px;\">Welcome to the My Fitness Tracker preference center...</span></p><p><br></p><p><a href=\"/selfservice/secur/logout.jsp\" rel=\"noopener noreferrer\" target=\"_self\" style=\"font-size: 16px;\">Logout</a></p>"
       },
       "componentName" : "forceCommunity:richTextInline",
       "id" : "dc4b5b0d-6b98-432f-b203-b654c6269a6b",
