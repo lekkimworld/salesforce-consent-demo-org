@@ -95,6 +95,7 @@ u.FirstName = 'Disabled*' + u.FirstName;
 u.LastName = 'Disabled*' + u.LastName;
 }
 UPDATE users;
+
 DELETE [SELECT Id FROM ContactPointTypeConsent];
 DELETE [SELECT Id FROM AuthorizationFormConsent];
 final List<Contact> contacts = [SELECT Id, IndividualId FROM Contact];

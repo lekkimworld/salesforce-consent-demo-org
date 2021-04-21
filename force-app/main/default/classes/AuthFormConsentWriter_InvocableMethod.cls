@@ -1,4 +1,4 @@
-public without sharing class AuthFormConsentWriter_InvocableMethod {
+public with sharing class AuthFormConsentWriter_InvocableMethod {
     @InvocableMethod(label='Write AuthorizationFormConsent record for Data Use Purpose')
     public static List<AuthFormConsentWriter_ActionOutput> execute(List<AuthFormConsentWriter_ActionInput> inputs) {
         final List<AuthFormConsentWriter_ActionOutput> results = new List<AuthFormConsentWriter_ActionOutput>();
