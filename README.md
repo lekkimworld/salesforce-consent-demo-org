@@ -13,6 +13,8 @@ sfdx force:source:deploy -m ApexClass,LightningComponentBundle,Flow
 
 rm *.pem *.der
 ORG_ID=`sfdx force:org:display --json | jq ".result.id" -r`
+USER_ID=`sfdx force:org:display --json | jq ".result.username" -r`
+INSTANCE_URL=`sfdx force:org:display --json | jq ".result.instanceUrl" -r`
 openssl req -newkey rsa:2048 -nodes -keyout private_key.pem -x509 -days 365 -out certificate.pem -subj "/CN=Demo Server App ($ORG_ID)/O=SFDC/C=DK"
 openssl x509 -in certificate.pem -pubkey > public_key.pem
 openssl x509 -outform der -in certificate.pem -out certificate.der
@@ -26,6 +28,8 @@ CERT_BASE64=`cat certificate.der | base64 -`
 cat ./connectedAppTemplates/Demo_Server_App_dev.connectedApp-meta.xml | sed "s|REPLACE_CERT|$CERT_BASE64|" | sed "s|REPLACE_CLIENT_ID|$CLIENT_ID1|" | sed "s|REPLACE_CLIENT_SECRET|$CLIENT_SECRET1|" > force-app/main/default/connectedApps/Demo_Server_App_dev.connectedApp-meta.xml
 cat ./connectedAppTemplates/Demo_User_App_dev.connectedApp-meta.xml | sed "s|REPLACE_CLIENT_ID|$CLIENT_ID2|" | sed "s|REPLACE_CLIENT_SECRET|$CLIENT_SECRET2|" > ./force-app/main/default/connectedApps/Demo_User_App_dev.connectedApp-meta.xml
 
+sfdx force:source:deploy -m PermissionSet
+sfdx force:user:permset:assign -n Demo_Server_App
 sfdx force:source:deploy -m ConnectedApp
 sfdx force:source:deploy -m Profile
 sfdx force:source:deploy -m SiteDotCom,Network,ExperienceBundle,CustomSite,ApexPage
@@ -41,6 +45,9 @@ echo "Client ID    : $CLIENT_ID2"
 echo "Client Secret: $CLIENT_SECRET2"
 
 cat ./private_key.pem | sed 's/$/\\n/g' | tr -d "\n"
+
+
+echo "Manually admin approve Demo Server App"
 ```
 
 Convert private key PEM to multiline .env variable
