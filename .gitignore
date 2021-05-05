@@ -40,4 +40,4 @@ dump.rdb
 *.pem
 *.der
 scripts
-**/connectedApps/**
+force-app/main/default/connectedApps/**

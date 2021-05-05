@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
     <contactEmail>mheisterberg@salesforce.com</contactEmail>
-    <label>Demo Server App - dev</label>
+    <label>Demo Server App</label>
     <oauthConfig>
         <callbackUrl>https://example.com/dummy</callbackUrl>
         <certificate>REPLACE_CERT</certificate>
@@ -19,4 +19,5 @@
         <refreshTokenPolicy>zero</refreshTokenPolicy>
     </oauthPolicy>
     <permissionSetName>Demo Server App</permissionSetName>
+    <profileName>System Administrator</profileName>
 </ConnectedApp>
