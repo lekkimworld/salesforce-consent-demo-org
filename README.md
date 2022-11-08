@@ -58,12 +58,14 @@ cat ./metadataTemplates/connectedApps/Demo_User_App.connectedApp-meta.xml \
 
 sfdx force:source:deploy -m PermissionSet
 sfdx force:user:permset:assign -n Demo_Server_App
-sfdx force:source:deploy -m ConnectedApp
-sfdx force:source:deploy -m ApexPage,Profile
-sfdx force:source:deploy -m SiteDotCom,Network,ExperienceBundle,CustomSite
+sfdx force:source:deploy -m ConnectedApp,ApexPage,Profile,SiteDotCom,Network,CustomSite
+sfdx force:source:deploy -m ExperienceBundle
 sfdx force:source:deploy -m ContentAsset
 sfdx force:community:publish -n "Customer Self-Service"
+SITE_URL=`sfdx force:community:publish -n "Customer Self-Service" --json | jq -r ".result.url"`
 
+echo "Site URL     : $SITE_URL"
+echo "UserID       : $USER_ID"
 echo "Demo Server App"
 echo "Client ID    : $CLIENT_ID1"
 echo "Client Secret: $CLIENT_SECRET1"
@@ -75,7 +77,8 @@ echo "Client Secret: $CLIENT_SECRET2"
 cat ./private_key.pem | sed 's/$/\\n/g' | tr -d "\n"
 
 echo "\n\n"
-echo "Manually admin approve Demo Server App"
+echo "Manually admin approve (add to profile) 'Demo Server App' for 'System Administrator' Profile"
+echo "Manually admin approve (add to profile 'Demo User App' for 'CC Demo User' Profile"
 ```
 
 Convert private key PEM to multiline .env variable
