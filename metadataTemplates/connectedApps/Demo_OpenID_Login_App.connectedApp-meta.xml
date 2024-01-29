@@ -5,7 +5,7 @@
         <key>contactId</key>
     </attributes>
     <contactEmail>mheisterberg@salesforce.com</contactEmail>
-    <label>Demo User App</label>
+    <label>Demo OpenID Login App</label>
     <oauthConfig>
         <callbackUrl>https://REPLACE_HEROKU_APP_DOMAIN/oidc/callback</callbackUrl>
         <consumerKey>REPLACE_CLIENT_ID</consumerKey>

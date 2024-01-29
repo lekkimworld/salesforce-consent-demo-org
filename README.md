@@ -1,126 +1,65 @@
 ## Deploy script
 
 ```
-sfdx force:org:create --targetdevhubusername consent_devhub --setdefaultusername -f config/project-scratch-def.json
-sfdx force:source:deploy -m Role
-ROLE_ID=`sfdx force:data:soql:query -q "select Id from UserRole where Name='Dummy'" --json | jq ".result.records[0].Id" -r`
-sfdx force:data:record:update -s User -w "Name='User User'" -v "LanguageLocaleKey=en_US TimeZoneSidKey=Europe/Paris LocaleSidKey=da UserPreferencesUserDebugModePref=true UserPreferencesApexPagesDeveloperMode=true UserPermissionsInteractionUser=true UserPermissionsKnowledgeUser=true UserRoleId=$ROLE_ID"
-sfdx shane:user:password:set -p Salesforce1 -g User -l User
-sfdx force:package:install -p 04t4J000002Dhe1QAC -w 30
+sf org create scratch --set-default -f config/project-scratch-def.json
+sf project deploy start -m Role
+ROLE_ID=`sf data query --query "select Id from UserRole where Name='Dummy'" --json | jq ".result.records[0].Id" -r`
+sf data update record -s User -w "Name='User User'" -v "LanguageLocaleKey=en_US TimeZoneSidKey=Europe/Paris LocaleSidKey=da UserPreferencesUserDebugModePref=true UserPreferencesApexPagesDeveloperMode=true UserPermissionsInteractionUser=true UserPermissionsKnowledgeUser=true UserRoleId=$ROLE_ID"
 
-sfdx force:source:deploy -m Layout,CustomObject,CustomApplication,FlexiPage,PermissionSet:Authorization_Form_App
-sfdx force:user:permset:assign -n Authorization_Form_App
-sfdx force:data:tree:import -p demodata/import-plan.json
-sfdx force:source:deploy -m ApexClass,LightningComponentBundle,Flow
+sf project deploy start -m Layout -m CustomObject -m CustomApplication -m FlexiPage -m PermissionSet:Demo_API_Only -m PermissionSet:Demo_Authorization_Form_App
+sf force user permset assign -n Demo_Authorization_Form_App
+sf data import tree -p demodata/plan-complete.json
+sf project deploy start -m ApexClass -m LightningComponentBundle -m Flow -m Settings
 
-rm *.pem *.der
-rm ./force-app/main/default/connectedApps/*.xml 2> /dev/null
-ORG_ID=`sfdx force:org:display --json | jq ".result.id" -r`
-USER_ID=`sfdx force:org:display --json | jq ".result.username" -r`
-INSTANCE_URL=`sfdx force:org:display --json | jq ".result.instanceUrl" -r`
-openssl req \
-    -newkey rsa:2048 \
-    -nodes \
-    -keyout private_key.pem \
-    -x509 \
-    -days 365 \
-    -out certificate.pem \
-    -subj "/CN=Demo Server App ($ORG_ID)/O=SFDC/C=DK"
-openssl x509 \
-    -in certificate.pem \
-    -pubkey \
-    > public_key.pem
-openssl x509 \
-    -outform der \
-    -in certificate.pem \
-    -out certificate.der
+sf apex run -f scripts/apex/create_api_only_user.apex
+API_USERNAME=`sf data query --query "select Username from User where Name='API User'" --json | jq ".result.records[0].Username" -r`
 
+ORG_ID=`sf org display --json | jq ".result.id" -r`
 HEROKU_APP_DOMAIN="salesforce-consent-demo.herokuapp.com"
 CLIENT_ID1=id1_`echo $ORG_ID`_`date +%s`
 CLIENT_SECRET1=secret1_`echo $ORG_ID`_`date +%s`
 CLIENT_ID2=id2_`echo $ORG_ID`_`date +%s`
 CLIENT_SECRET2=secret2_`echo $ORG_ID`_`date +%s`
-CERT_BASE64=`cat certificate.der | base64 -`
 
-cat ./metadataTemplates/connectedApps/Demo_Server_App.connectedApp-meta.xml \
-    | sed "s|REPLACE_CERT|$CERT_BASE64|" \
+cat ./metadataTemplates/connectedApps/Demo_ClientCredentials_App.connectedApp-meta.xml \
+    | sed "s|REPLACE_API_USERNAME|$API_USERNAME|" \
     | sed "s|REPLACE_CLIENT_ID|$CLIENT_ID1|" \
     | sed "s|REPLACE_CLIENT_SECRET|$CLIENT_SECRET1|" \
-    > force-app/main/default/connectedApps/Demo_Server_App.connectedApp-meta.xml
+    > force-app/main/default/connectedApps/Demo_ClientCredentials_App.connectedApp-meta.xml
 
-cat ./metadataTemplates/connectedApps/Demo_User_App.connectedApp-meta.xml \
+cat ./metadataTemplates/connectedApps/Demo_OpenID_Login_App.connectedApp-meta.xml \
     | sed "s|REPLACE_HEROKU_APP_DOMAIN|$HEROKU_APP_DOMAIN|" \
     | sed "s|REPLACE_CLIENT_ID|$CLIENT_ID2|" \
     | sed "s|REPLACE_CLIENT_SECRET|$CLIENT_SECRET2|" \
-    > ./force-app/main/default/connectedApps/Demo_User_App.connectedApp-meta.xml
+    > ./force-app/main/default/connectedApps/Demo_OpenID_Login_App.connectedApp-meta.xml
 
-
-
-sfdx force:source:deploy -m PermissionSet
-sfdx force:user:permset:assign -n Demo_Server_App
-sfdx force:source:deploy -m ConnectedApp,ApexPage,Profile,SiteDotCom,Network,CustomSite
-sfdx force:source:deploy -m ExperienceBundle
-sfdx force:source:deploy -m ContentAsset
-sfdx force:community:publish -n "Customer Self-Service"
-SITE_URL=`sfdx force:community:publish -n "Customer Self-Service" --json | jq -r ".result.url"`
+sf project deploy start -m ConnectedApp -m ApexPage -m Profile -m SiteDotCom -m Network -m CustomSite
+sf project deploy start -m PermissionSet:Demo_ClientCredentials_App
+sf force user permset assign --perm-set-name=Demo_ClientCredentials_App --on-behalf-of=$API_USERNAME
+sf project deploy start -m ExperienceBundle
+sf project deploy start -m ContentAsset
+SITE_URL=`sfdx force community publish -n "Customer Self-Service" --json | jq -r ".result.url"`
 
 echo "Site URL     : $SITE_URL"
 echo "UserID       : $USER_ID"
-echo "Demo Server App"
+echo "Demo ClientCredentials App"
 echo "Client ID    : $CLIENT_ID1"
 echo "Client Secret: $CLIENT_SECRET1"
 echo ""
-echo "Demo User App"
+echo "Demo Authorization Form App"
 echo "Client ID    : $CLIENT_ID2"
 echo "Client Secret: $CLIENT_SECRET2"
 
-cat ./private_key.pem | sed 's/$/\\n/g' | tr -d "\n"
 
 echo "\n\n"
 echo "Manually admin approve (add to profile) 'Demo Server App' for 'System Administrator' Profile"
 echo "Manually admin approve (add to profile 'Demo User App' for 'CC Demo User' Profile"
 ```
 
-Convert private key PEM to multiline .env variable
-cat ../org/private_key.pem | sed 's/$/\\n/g' | tr -d "\n"
-
 ## Create demo portal user
 
-```
-final String timezone = 'Europe/Paris';
-final String locale = 'da_DK';
-final String actualEmail = 'mheisterberg@salesforce.com';
-final String fn = 'John';
-final String ln = 'Doe';
-final String alias = (fn.toLowerCase().substring(0, 1) + ln.toLowerCase()).substring(0,4) + String.valueOf(DateTime.now().getTime()).reverse().substring(0,4);
-final String email = fn.toLowerCase() + '.' + ln.toLowerCase() + '@example.com';
+See `scripts/apex/create_demouser_johndoe.apex`
 
-Account a = [SELECT Id FROM Account WHERE Name = 'Foo Corp.' LIMIT 1];
-
-Contact c = new Contact();
-c.FirstName = fn;
-c.LastName = ln;
-c.Email = email;
-c.AccountId = a.Id;
-INSERT c;
-
-Profile p = [SELECT Id FROM Profile WHERE Name = 'CC Demo User' LIMIT 1];
-
-User u = new User();
-u.firstname = fn;
-u.lastname = ln;
-u.username = email;
-u.email = actualEmail;
-u.ProfileId = p.Id;
-u.Contactid = c.Id;
-u.alias = alias;
-u.EmailEncodingKey = 'UTF-8';
-u.IsActive = true;
-u.LanguageLocaleKey = 'en_US';
-u.LocaleSidKey = locale;
-u.TimeZoneSidKey = timezone;
-insert u;
-```
 
 ## Disable all portal users and delete their data
 
@@ -141,4 +80,17 @@ for (Contact c : contacts) c.IndividualId = null;
 UPDATE contacts;
 DELETE [SELECT Id FROM Individual];
 DELETE contacts;
+```
+
+## Clean up ##
+```
+DELETE [select id from AuthorizationFormText];
+DELETE [select id from AuthorizationFormDataUse];
+DELETE [select id from AuthorizationForm];
+DELETE [select id from DataUsePurpose];
+DELETE [select id from DataUseLegalBasis];
+DELETE [select id from Individual];
+DELETE [select id from Contact];
+DELETE [select id from Entitlement];
+DELETE [select id from Account];
 ```

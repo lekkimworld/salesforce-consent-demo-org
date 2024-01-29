@@ -1,6 +1,7 @@
 {
   "orgName": "MyFitnessTracker",
   "edition": "Developer",
+  "country": "US",
   "features": [
     "Communities",
     "Sites",

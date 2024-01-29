@@ -1,6 +1,7 @@
 {
   "appPageId" : "774a498a-ab75-4744-808f-becd7784dfe3",
   "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
   "id" : "7bcf0b9d-eb39-4477-8f73-d419c9c5b4f9",
   "label" : "Record Detail",
   "regions" : [ {
@@ -45,8 +46,8 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
+        "customHeadTags" : "",
         "description" : "",
-        "metaTags" : "",
         "title" : "{!Record._Object}: {!Record._Title}"
       },
       "componentName" : "forceCommunity:seoAssistant",

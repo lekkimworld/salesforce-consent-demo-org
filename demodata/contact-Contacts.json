@@ -8,7 +8,30 @@
             "FirstName": "Jane",
             "LastName": "Doe",
             "Email": "jane.doe@example.com",
-            "AccountId": "@AccountRef_Foo"
+            "AccountId": "@AccountRef_Foo",
+            "MailingCountry": "Denmark"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef2"
+            },
+            "FirstName": "Roger",
+            "LastName": "McDeerpoint",
+            "Email": "roger.mcdeerpoint@example.com",
+            "AccountId": "@AccountRef_Foo",
+            "MailingCountry": "Denmark"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef3"
+            },
+            "FirstName": "Veronica",
+            "LastName": "Meier",
+            "Email": "veronica.meier@example.com",
+            "AccountId": "@AccountRef_Bar",
+            "MailingCountry": "Germany"
         }
     ]
 }

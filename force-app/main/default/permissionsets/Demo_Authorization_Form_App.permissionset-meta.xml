@@ -30,7 +30,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
-    <label>Authorization Form App</label>
+    <label>Demo Authorization Form App</label>
     <license>Salesforce</license>
     <objectPermissions>
         <allowCreate>false</allowCreate>

@@ -6,6 +6,13 @@
                 "referenceId": "AccountRef_Foo"
             },
             "Name": "Foo Corp."
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef_Bar"
+            },
+            "Name": "Bar Inc."
         }
     ]
 }

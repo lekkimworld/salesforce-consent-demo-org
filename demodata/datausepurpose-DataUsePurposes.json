@@ -31,6 +31,22 @@
             },
             "Name": "Online Order",
             "LegalBasisId": "@DataUseLegalBasisRef_Order"
+        },
+        {
+            "attributes": {
+                "type": "DataUsePurpose",
+                "referenceId": "DataUsePurposeRef_PhoneComms"
+            },
+            "Name": "Phone Communications",
+            "LegalBasisId": "@DataUseLegalBasisRef_SalesCommConsent"
+        },
+        {
+            "attributes": {
+                "type": "DataUsePurpose",
+                "referenceId": "DataUsePurposeRef_EmailComms"
+            },
+            "Name": "Email Communications",
+            "LegalBasisId": "@DataUseLegalBasisRef_SalesCommConsent"
         }
     ]
 }
