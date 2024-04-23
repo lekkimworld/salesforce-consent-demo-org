@@ -4,7 +4,7 @@
 
 # Salesforce cache
 .sfdx/
-.sf/
+.sf/*
 .localdevserver/
 
 # LWC VSCode autocomplete
@@ -40,5 +40,4 @@ $RECYCLE.BIN/
 dump.rdb
 *.pem
 *.der
-scripts
 force-app/main/default/connectedApps/**

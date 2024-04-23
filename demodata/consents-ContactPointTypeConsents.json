@@ -1,0 +1,17 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "ContactPointTypeConsent",
+                "referenceId": "cptcJaneDoeEmailComms"
+            },
+            "DataUsePurposeId": "@DataUsePurposeRef_EmailComms",
+            "PartyId": "@IndividualRef1",
+            "Name": "Jane Doe Email Communications",
+            "PrivacyConsentStatus": "OptIn",
+            "EffectiveFrom": "2024-04-16T10:00:00.000+0000",
+            "DoubleConsentCaptureDate": "2024-04-16T10:34:00.000+0000",
+            "ContactPointType": "Email"
+        }
+    ]
+}

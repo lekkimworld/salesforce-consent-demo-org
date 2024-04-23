@@ -48,11 +48,27 @@
         ]
     },
     {
+        "sobject": "Individual",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": [
+            "individual-Individuals.json"
+        ]
+    },
+    {
         "sobject": "Contact",
         "saveRefs": true,
         "resolveRefs": true,
         "files": [
             "contact-Contacts.json"
+        ]
+    },
+    {
+        "sobject": "ContactPointTypeConsent",
+        "saveRefs": false,
+        "resolveRefs": true,
+        "files": [
+            "consents-ContactPointTypeConsents.json"
         ]
     }
 ]

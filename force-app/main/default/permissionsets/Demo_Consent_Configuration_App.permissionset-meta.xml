@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <applicationVisibilities>
-        <application>Authorization_Forms</application>
+        <application>Consent_Configuration</application>
         <visible>true</visible>
     </applicationVisibilities>
     <fieldPermissions>
@@ -30,7 +30,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
-    <label>Demo Authorization Form App</label>
+    <label>Demo Consent Configuration App</label>
     <license>Salesforce</license>
     <objectPermissions>
         <allowCreate>false</allowCreate>

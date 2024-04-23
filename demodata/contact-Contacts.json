@@ -9,7 +9,8 @@
             "LastName": "Doe",
             "Email": "jane.doe@example.com",
             "AccountId": "@AccountRef_Foo",
-            "MailingCountry": "Denmark"
+            "MailingCountry": "Denmark",
+            "IndividualId": "@IndividualRef1"
         },
         {
             "attributes": {
